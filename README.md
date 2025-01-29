@@ -67,5 +67,5 @@ Funkcje aplikacji:
 2.W przypadku problemów z logowaniem sprawdź konfigurację łańcucha połączenia w pliku appsettings.json.
 
 
-<Licencja>:
+Licencja:
   - Projekt udostępniany jest na licencji MIT.
