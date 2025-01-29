@@ -1,0 +1,65 @@
+﻿@model IEnumerable<OrderManagement.Data.Models.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>Products</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Product</a>
+</p>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <!-- Link do sortowania po nazwie -->
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParam"]">Name</a>
+            </th>
+
+            <!-- Link do sortowania po cenie -->
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParam"]">Price</a>
+            </th>
+
+            <!-- Dodanie kolumny dla jednostki -->
+            <th>
+                Unit
+            </th>
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <!-- Wyświetlenie nazwy produktu -->
+                    <td>@item.Name</td>
+
+                    <!-- Wyświetlenie ceny produktu w formacie walutowym -->
+                    <td>@item.Price.ToString("C")</td>
+
+                    <!-- Wyświetlenie jednostki produktu -->
+                    <td>@item.Unit</td>
+
+                    <!-- Linki do edycji, szczegółów i usuwania produktu -->
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4" class="text-center text-muted">No products available.</td>
+            </tr>
+        }
+    </tbody>
+</table>

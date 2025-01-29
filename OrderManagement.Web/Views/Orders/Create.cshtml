@@ -1,0 +1,68 @@
+﻿@model OrderManagement.Data.Models.Order
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Order</h1>
+
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post">
+            @Html.AntiForgeryToken()
+
+            <!-- Walidacja ogólna -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Order Date -->
+            <div class="form-group">
+                <label asp-for="OrderDate" class="control-label"></label>
+                <input asp-for="OrderDate" class="form-control" type="datetime-local" value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
+                <span asp-validation-for="OrderDate" class="text-danger"></span>
+            </div>
+
+
+            <!-- Customer Drop-down -->
+            <div class="form-group">
+                <label asp-for="CustomerId" class="control-label"></label>
+                <select asp-for="CustomerId" class="form-control" asp-items="ViewBag.CustomerId"></select>
+                <span asp-validation-for="CustomerId" class="text-danger"></span>
+            </div>
+
+            <!-- Products Checkboxes -->
+            <div class="form-group">
+                <label>Products</label>
+                @if (ViewBag.Products != null && ((List<OrderManagement.Data.Models.Product>)ViewBag.Products).Count > 0)
+                {
+                    foreach (var product in (List<OrderManagement.Data.Models.Product>)ViewBag.Products)
+                    {
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" name="SelectedProducts" value="@product.Id" />
+                            <label class="form-check-label">@product.Name</label>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p class="text-muted">No products available.</p>
+                }
+            </div>
+
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @Html.Partial("_ValidationScriptsPartial")
+}

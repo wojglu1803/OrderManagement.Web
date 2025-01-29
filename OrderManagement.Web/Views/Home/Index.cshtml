@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Order Management Dashboard";
+}
+
+<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="display-4">Welcome to Order Management</h1>
+        <p class="lead">Manage your products, orders, and customers efficiently.</p>
+        <hr class="my-4">
+        <p>Use the navigation menu above to access various sections of the application.</p>
+    </div>
+
+    <div class="row text-center mt-5">
+        <div class="col-md-4">
+            <div class="card border-primary">
+                <div class="card-body">
+                    <h5 class="card-title">Products</h5>
+                    <p class="card-text">View, add, or update products available in your store.</p>
+                    <a href="/Products" class="btn btn-primary">Manage Products</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-success">
+                <div class="card-body">
+                    <h5 class="card-title">Orders</h5>
+                    <p class="card-text">Keep track of orders and their statuses.</p>
+                    <a href="/Orders" class="btn btn-success">Manage Orders</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-info">
+                <div class="card-body">
+                    <h5 class="card-title">Customers</h5>
+                    <p class="card-text">Manage your customers' information and details.</p>
+                    <a href="/Customers" class="btn btn-info">Manage Customers</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-5 text-center">
+        <p>&copy; 2025 Order Management. All Rights Reserved.</p>
+    </footer>
+</div>
